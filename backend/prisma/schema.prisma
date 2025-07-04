@@ -16,9 +16,9 @@ model User {
   phoneNumber    String
   gender         Gender
   role           UserRole
-  apptTime       DateTime?
-  doctorId       Int?     // FK to assigned doctor
-  assignedDoctor Doctor?  @relation(fields: [doctorId], references: [id])
+  apptTime       DateTime?     
+  doctorId       Int?          
+  assignedDoctor Doctor?       @relation(fields: [doctorId], references: [id])
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
@@ -28,7 +28,7 @@ model Doctor {
   name           String
   department     String
   specialization String
-  users          User[]  
+  users          User[]         // One-to-many relation with User
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
@@ -39,7 +39,6 @@ enum Gender {
   OTHERS
 }
 
-// UserRole enum now includes ADMIN as well
 enum UserRole {
   ADMIN
   USER
