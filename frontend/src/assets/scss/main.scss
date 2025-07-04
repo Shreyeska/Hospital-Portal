@@ -1,0 +1,14 @@
+//components
+@use "components/header";
+@use "components/services";
+@use "components/about";
+@use "components/contact";
+@use "components/hero";
+@use "components/confirmdialog";
+//base
+@use "base/typography" as *;
+
+//Pages
+@use "pages/singin";
+@use "pages/dashboard";
+@use "pages/user";

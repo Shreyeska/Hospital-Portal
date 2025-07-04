@@ -1,15 +1,13 @@
 import prisma from "../models/prismaClient.js";
 import bcrypt from "bcryptjs";
 
-const ADMIN_EMAILS = ["admin@example.com"];
-
-function isAdmin(email) {
-  return ADMIN_EMAILS.includes(email);
+function isAdmin(role) {
+  return typeof role === "string" && role.toUpperCase() === "ADMIN";
 }
 
 export async function createUser(req, res) {
   const {
-    adminEmail,
+    requestBy,
     fullName,
     email,
     password,
@@ -22,31 +20,28 @@ export async function createUser(req, res) {
   } = req.body;
 
   // Check if the request is made by an admin
-  if (!isAdmin(adminEmail)) {
+  if (!isAdmin(requestBy)) {
     return res.status(403).json({ error: "Access denied." });
   }
 
-  // Basic validation
   if (!fullName || !email || !password || !role) {
     return res.status(400).json({ error: "Missing required fields" });
   }
 
   try {
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create the user in the database
     const newUser = await prisma.user.create({
       data: {
         fullName,
         email,
         password: hashedPassword,
         address,
-        apptTime,
+        apptTime: apptTime ? new Date(apptTime) : null,
         doctorId,
         phoneNumber,
         gender,
-        role,
+        role: "USER",
       },
     });
 
@@ -70,6 +65,7 @@ export async function createUser(req, res) {
 export async function getUsers(req, res) {
   try {
     const users = await prisma.user.findMany({
+      where: { role: { not: "ADMIN" } }, // exclude admins
       include: { assignedDoctor: true },
     });
     res.json(users);
@@ -79,24 +75,34 @@ export async function getUsers(req, res) {
   }
 }
 
+export async function getDoctors(req, res) {
+  try {
+    const doctors = await prisma.doctor.findMany();
+    res.json(doctors);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch doctors" });
+  }
+}
+
 export async function updateUser(req, res) {
   const id = Number(req.params.id);
-  const { adminEmail, ...updates } = req.body; // extract adminEmail separately
+  const { requestBy, ...updates } = req.body;
 
-  if (updates.apptTime) {
-    updates.apptTime = new Date(updates.apptTime);
-  }
-
-  // Check if adminEmail is admin (you should add this check here)
-  if (!(await isAdmin(adminEmail))) {
+  if (!isAdmin(requestBy)) {
     return res.status(403).json({ error: "Access denied. Not an admin." });
   }
 
   try {
+    if (updates.apptTime) {
+      updates.apptTime = new Date(updates.apptTime);
+    }
+
     const updatedUser = await prisma.user.update({
       where: { id },
-      data: updates, // now adminEmail won't be here
+      data: updates,
     });
+
     res.json(updatedUser);
   } catch (error) {
     console.error(error);
@@ -106,6 +112,11 @@ export async function updateUser(req, res) {
 
 export async function deleteUser(req, res) {
   const id = Number(req.params.id);
+  const { requestBy } = req.body;
+
+  if (!isAdmin(requestBy)) {
+    return res.status(403).json({ error: "Access denied. Not an admin." });
+  }
 
   try {
     await prisma.user.delete({ where: { id } });

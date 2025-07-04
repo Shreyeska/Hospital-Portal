@@ -64,3 +64,5 @@ export async function login(req, res) {
     return res.status(500).json({ error: "Internal server error" });
   }
 }
+
+//write a logout function

@@ -1,0 +1,75 @@
+// src/components/Contact/Contact.scss
+.contact {
+  background-color: white;
+
+  &-content {
+    display: flex;
+    gap: 50px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &-info {
+    flex: 1;
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 30px;
+
+      &-icon {
+        font-size: 1.5rem;
+        color: var(--primary);
+        padding: 15px;
+        background-color: #e0f2fe;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h3 {
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      p {
+        color: var(--gray);
+      }
+    }
+  }
+
+  &-form {
+    flex: 1;
+
+    .form-group {
+      margin-bottom: 20px;
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: var(--primary);
+        }
+      }
+
+      textarea {
+        resize: vertical;
+      }
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}

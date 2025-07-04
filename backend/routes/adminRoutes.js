@@ -4,6 +4,7 @@ import {
   createUser,
   updateUser,
   deleteUser,
+  getDoctors,
 } from "../controllers/adminController.js";
 
 const router = express.Router();
@@ -11,7 +12,8 @@ const router = express.Router();
 // router.post("/set-role", setRole);
 
 router.post("/users", getUsers);
-router.post("/users/create", createUser);
+router.post("/doctors", getDoctors);
+router.post("/create", createUser);
 router.put("/users/:id", updateUser);
 router.delete("/users/:id", deleteUser);
 

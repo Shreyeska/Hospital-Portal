@@ -1,0 +1,175 @@
+// AdminDashboard.scss
+
+@import "../../../index.scss";
+// AdminDashboard.scss
+
+.admin-dashboard-container {
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: var(--light);
+}
+
+.admin-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--gray);
+  margin-bottom: 30px;
+
+  h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin: 0;
+  }
+}
+
+.logout-btn {
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--primary-dark);
+  }
+}
+
+.admin-content {
+  h2 {
+    color: var(--dark);
+    margin-bottom: 30px;
+    font-size: 2rem;
+  }
+}
+
+.users-section,
+.doctors-section {
+  margin-bottom: 40px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+}
+
+.user-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+
+  .form-group {
+    margin-bottom: 0;
+
+    input,
+    select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--gray);
+      border-radius: 4px;
+      font-size: 14px;
+    }
+  }
+}
+
+.create-btn {
+  grid-column: 1 / -1;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--primary-dark);
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  th,
+  td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--gray);
+  }
+
+  th {
+    background-color: var(--light);
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  tr:hover {
+    background-color: #f1f5f9;
+  }
+}
+
+input,
+select {
+  padding: 6px 10px;
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.edit-btn,
+.save-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--primary-dark);
+  }
+}
+
+.delete-btn,
+.cancel-btn {
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--dark);
+  }
+}
+
+.doctors-table {
+  th,
+  td {
+    &:nth-child(5),
+    &:nth-child(6) {
+      white-space: nowrap;
+    }
+  }
+}

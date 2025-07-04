@@ -1,0 +1,63 @@
+// src/pages/User/User.scss
+@import "../../../index.scss";
+
+.user-page {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  padding-top: 80px; // Account for header
+}
+
+.user-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.user-header {
+  text-align: center;
+  margin-bottom: 40px;
+
+  .user-icon {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+
+  .user-subtitle {
+    color: var(--gray);
+    font-size: 1.2rem;
+  }
+}
+
+.user-content {
+  display: flex;
+  justify-content: center;
+}
+
+.user-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+
+  h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+  }
+
+  p {
+    color: var(--gray);
+    line-height: 1.6;
+  }
+}

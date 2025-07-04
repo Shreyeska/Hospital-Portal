@@ -1,0 +1,55 @@
+// src/components/About/About.scss
+.about {
+  background-color: #f8fafc;
+
+  &-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &-image {
+    flex: 1;
+
+    img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  &-text {
+    flex: 1;
+
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+    }
+  }
+
+  &-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    .stat-item {
+      text-align: center;
+
+      h3 {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: var(--gray);
+        margin-bottom: 0;
+      }
+    }
+  }
+}
