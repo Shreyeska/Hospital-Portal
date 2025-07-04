@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  fullName       String
+  email          String   @unique
+  password       String
+  address        String
+  phoneNumber    String
+  gender         Gender
+  role           UserRole
+  apptTime       DateTime?
+  doctorId       Int?     // FK to assigned doctor
+  assignedDoctor Doctor?  @relation(fields: [doctorId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Doctor {
+  id             Int      @id @default(autoincrement())
+  name           String
+  department     String
+  specialization String
+  users          User[]  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHERS
+}
+
+// UserRole enum now includes ADMIN as well
+enum UserRole {
+  ADMIN
+  USER
+  DOCTOR
+}
