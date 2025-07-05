@@ -1,4 +1,3 @@
-// src/auth.js
 export const loginUser = (role) => {
   localStorage.setItem("role", role);
   console.log(role);

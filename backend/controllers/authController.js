@@ -65,4 +65,3 @@ export async function login(req, res) {
   }
 }
 
-//write a logout function

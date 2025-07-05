@@ -1,4 +1,3 @@
-// src/components/Services/Services.jsx
 import { FaClinicMedical, FaUserMd, FaCalendarAlt } from "react-icons/fa";
 import "../assets/scss/main.scss";
 

@@ -28,7 +28,7 @@ model Doctor {
   name           String
   department     String
   specialization String
-  users          User[]         // One-to-many relation with User
+  users          User[]         
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }

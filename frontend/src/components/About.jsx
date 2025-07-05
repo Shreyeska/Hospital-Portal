@@ -1,4 +1,3 @@
-// src/components/About/About.jsx
 import "../assets/scss/main.scss";
 
 const About = () => {
