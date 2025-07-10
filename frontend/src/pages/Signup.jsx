@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/images/TM full.png";
 import api from "../network/api";
-import "../assets/scss/main.scss";
 import Header from "../components/Header";
 
 const Signup = () => {
@@ -68,14 +67,19 @@ const Signup = () => {
   return (
     <div>
       <Header />
-      <div className="container">
-        <div className=" login-container">
-          <div className="login-box">
-            <h2>Sign up</h2>
+      <div className="container mx-auto">
+        <div className="min-h-screen flex justify-center items-center py-5 px-5 bg-[#f5f7fa] mt-5">
+          <div className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md text-center">
+            <h2 className="text-3xl mb-5 text-[#1c4532]">Sign up</h2>
 
             <form onSubmit={handleRegister}>
-              <div className="input-group">
-                <label htmlFor="email">Email</label>
+              <div className="mb-5 text-left">
+                <label
+                  htmlFor="email"
+                  className="block mb-1 font-semibold text-[#1c4532]"
+                >
+                  Email
+                </label>
                 <input
                   type="text"
                   id="email"
@@ -84,10 +88,16 @@ const Signup = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  className="w-full p-4 border-2 border-[#1c4532] rounded-xl text-base box-border appearance-none focus:border-[#133224] placeholder-[#888]"
                 />
               </div>
-              <div className="input-group">
-                <label htmlFor="name">Full Name</label>
+              <div className="mb-5 text-left">
+                <label
+                  htmlFor="name"
+                  className="block mb-1 font-semibold text-[#1c4532]"
+                >
+                  Full Name
+                </label>
                 <input
                   type="text"
                   id="fullName"
@@ -96,10 +106,16 @@ const Signup = () => {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
+                  className="w-full p-4 border-2 border-[#1c4532] rounded-xl text-base box-border appearance-none focus:border-[#133224] placeholder-[#888]"
                 />
               </div>
-              <div className="input-group">
-                <label htmlFor="address">Address</label>
+              <div className="mb-5 text-left">
+                <label
+                  htmlFor="address"
+                  className="block mb-1 font-semibold text-[#1c4532]"
+                >
+                  Address
+                </label>
                 <input
                   type="text"
                   id="address"
@@ -108,10 +124,16 @@ const Signup = () => {
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   required
+                  className="w-full p-4 border-2 border-[#1c4532] rounded-xl text-base box-border appearance-none focus:border-[#133224] placeholder-[#888]"
                 />
               </div>
-              <div className="input-group">
-                <label htmlFor="phoneNumber">Phone Number</label>
+              <div className="mb-5 text-left">
+                <label
+                  htmlFor="phoneNumber"
+                  className="block mb-1 font-semibold text-[#1c4532]"
+                >
+                  Phone Number
+                </label>
                 <input
                   type="text"
                   id="phoneNumber"
@@ -120,16 +142,23 @@ const Signup = () => {
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   required
+                  className="w-full p-4 border-2 border-[#1c4532] rounded-xl text-base box-border appearance-none focus:border-[#133224] placeholder-[#888]"
                 />
               </div>
-              <div className="input-group">
-                <label htmlFor="gender">Gender</label>
+              <div className="mb-5 text-left">
+                <label
+                  htmlFor="gender"
+                  className="block mb-1 font-semibold text-[#1c4532]"
+                >
+                  Gender
+                </label>
                 <select
                   id="gender"
                   name="gender"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                   required
+                  className="w-full p-4 border-2 border-[#1c4532] rounded-xl text-base box-border appearance-none focus:border-[#133224] placeholder-[#888]"
                 >
                   <option value="" disabled>
                     Select your gender
@@ -139,8 +168,13 @@ const Signup = () => {
                   <option value="OTHERS">Others</option>
                 </select>
               </div>
-              <div className="input-group password-container">
-                <label htmlFor="password">Password</label>
+              <div className="mb-5 text-left relative">
+                <label
+                  htmlFor="password"
+                  className="block mb-1 font-semibold text-[#1c4532]"
+                >
+                  Password
+                </label>
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
@@ -149,9 +183,10 @@ const Signup = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  className="w-full p-4 pr-10 border-2 border-[#1c4532] rounded-xl text-base box-border appearance-none focus:border-[#133224] placeholder-[#888]"
                 />
                 <div
-                  className="password-eye"
+                  className="absolute top-[70%] right-2.5 transform -translate-y-1/2 cursor-pointer"
                   onClick={togglePasswordVisibility}
                 >
                   <img
@@ -162,11 +197,17 @@ const Signup = () => {
               </div>
               {error && <div className="error-message"></div>}
 
-              <button type="submit" className="login-button">
+              <button
+                type="submit"
+                class="bg-[rgb(28,69,50)] text-white py-3 px-4 border-none rounded-full w-full text-base font-semibold cursor-pointer mt-2.5 hover:bg-[rgb(19,50,36)]"
+              >
                 Sign up
               </button>
-              <p>
-                Already have an account? <a href="/login">Log in</a>
+              <p className="text-base text-[#666]">
+                Already have an account?{" "}
+                <a href="/login" className="text-[#1c4532] font-semibold">
+                  Log in
+                </a>
               </p>
             </form>
           </div>
